@@ -2,7 +2,6 @@
 
 var xmpp = require('node-xmpp-server')
 var server = null
-var Client = require('node-xmpp-client')
 
 var startServer = function (done) {
   // Sets up the server.
@@ -13,7 +12,7 @@ var startServer = function (done) {
 
   // On connection event. When a client connects.
   server.on('connection', function (client) {
-   console.log("Cliente " + client.jid + " conectado !"); 
+   console.log("Cliente " + client.fid + " conectado !"); 
   }) 
 
   server.on('listening', done)
