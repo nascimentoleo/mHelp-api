@@ -1,0 +1,28 @@
+{
+  "name": "mHelp-api",
+  "description": "API mHelp",
+  "main": "index.js",
+  "author": "Leonardo P. do Nascimento <leonardo_pinheiro12@hotmail.com>",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "babel": "~6.5.2",
+    "express": "~4.14.0",
+    "node-gcm": "^0.14.4",
+    "socket.io": "~1.5.1",
+    "ws": "^1.1.1"
+  },
+  "devDependencies": {
+    "modulo-4": "*",
+    "babel-cli": "~6.18.0",
+    "babel-preset-es2015": "~6.18.0",
+    "babel-core": "~6.18.2"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:leonzmalz/mHelp-api.git"
+  }
+}
