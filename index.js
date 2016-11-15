@@ -39,7 +39,7 @@ var startServer = function (done) {
 
     // Stanza handling
     client.on('stanza', function (stanza) {
-      console.log('server:', client.jid.local, 'stanza', stanza.toString())
+      console.log('client:', client.jid.local, 'stanza', stanza.toString())
       var from = stanza.attrs.from
       stanza.attrs.from = stanza.attrs.to
       stanza.attrs.to = from
@@ -48,7 +48,9 @@ var startServer = function (done) {
 
     // On Disconnect event. When a client disconnects
     client.on('disconnect', function () {
-      console.log('server:', client.jid.local, 'DISCONNECT')
+      if ( typeof client.jid !== 'undefined' && client.jid ){
+		  console.log('client:', client.jid.local, 'DISCONNECT')
+	  }
     })  
   })
 
