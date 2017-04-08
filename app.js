@@ -5,8 +5,7 @@ var fs     = require('fs');
 const server = new Hapi.Server();
 
 server.connection({ 
-  port: 8080,
-  host: 'localhost' 
+  port: 8000 
 });
 
 server.start((err) => {
