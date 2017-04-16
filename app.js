@@ -3,6 +3,7 @@
 const Hapi = require('hapi');
 var fs     = require('fs');
 const server = new Hapi.Server();
+const Inert = require('inert');
 
 server.connection({ 
   port: 8000 
@@ -14,6 +15,8 @@ server.start((err) => {
   }
   console.log(`Server running at: ${server.info.uri}`);
 });
+
+server.register(Inert, () => {});
 
 server.route({
   method: 'GET',
@@ -51,3 +54,27 @@ server.route({
     
 });
 
+server.route({  
+  method: 'GET',
+  path: '/delete/{filename?}',
+  handler: function(request, reply) {
+    var path = "uploads/" + request.params.filename;
+    fs.unlink(path, function(err,data){
+        if (err)
+          return reply({'response':"Error"});
+        
+        return reply({'response':"Deleted"});
+    });  
+  }
+  
+});
+
+server.route({  
+  method: 'GET',
+  path: '/download/{param*}',
+  handler:{
+    directory:{
+      path: 'uploads'
+    }
+  }
+});
