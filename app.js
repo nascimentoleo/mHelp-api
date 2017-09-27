@@ -4,7 +4,6 @@ const Hapi   = require('hapi');
 const server = new Hapi.Server();
 var fs       = require('fs');
 const Inert  = require('inert');
-var mkdirp   = require('mkdirp');
 
 server.connection({ 
   port: 8000 
@@ -45,18 +44,12 @@ server.route({
       //Extrai o arquivo da requisição 
       form.parse(request.payload, function(error, fields, files) {
         fs.readFile(files.file.path, function (error, data){
-          mkdirp("uploads/", function(err) { 
-              if (err) 
-                  return reply({'response':"Erro ao criar repositorio"});
-              else{
-                  var endereco = "uploads/" + files.file.originalFilename;
-                  //Salva o arquivo no endereço especificado
-                  fs.writeFile(endereco, data, function (error) {
-                    if(error)
-                      return reply({'response':"Erro"});
-                  }); 
-              } 
-          });
+          var endereco = "uploads/" + files.file.originalFilename;
+          //Salva o arquivo no endereço especificado
+          fs.writeFile(endereco, data, function (error) {
+            if(error)
+              return reply({'response':"Erro"});
+          }); 
                     
         });  
         return reply({'response':"Salvo"});
