@@ -10,8 +10,9 @@ A API possui 3 rotas:
 
 # Instalação
 
-Basta executar o seguinte comando no diretório raiz do servidor
+Basta executar os seguintes comandos no diretório raiz do servidor
 
 ```sh
+npm install
 npm start
 ```
