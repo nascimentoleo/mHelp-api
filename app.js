@@ -43,8 +43,8 @@ server.route({
       var form = new multiparty.Form();
       //Extrai o arquivo da requisição 
       form.parse(request.payload, function(error, fields, files) {
-        fs.readFile(files.file.path, function (error, data){
-          var endereco = "uploads/" + files.file.originalFilename;
+        fs.readFile(files.file[0].path, function (error, data){
+          var endereco = "uploads/" + files.file[0].originalFilename;
           //Salva o arquivo no endereço especificado
           fs.writeFile(endereco, data, function (error) {
             if(error)
